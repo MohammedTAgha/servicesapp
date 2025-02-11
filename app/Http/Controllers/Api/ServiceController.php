@@ -17,13 +17,14 @@ class ServiceController extends Controller
     // Create a new service
     public function store(Request $request)
     {
+        // return response()->json($request, 201);;
         $request->validate([
             'name' => 'required|string',
             'details' => 'required|string',
             'price' => 'required|numeric',
         ]);
 
-        $service = Service::create($request->all());
+        $service = Service::create($request->all());    
         return response()->json($service, 201);
     }
 
@@ -36,6 +37,8 @@ class ServiceController extends Controller
     // Update a service
     public function update(Request $request, Service $service)
     {
+         
+
         $request->validate([
             'name' => 'sometimes|string',
             'details' => 'sometimes|string',
