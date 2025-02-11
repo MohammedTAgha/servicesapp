@@ -13,7 +13,7 @@ class ServiceController extends Controller
         $services = Service::all();
         return response()->json($services);
     }
-
+    
     // Create a new service
     public function store(Request $request)
     {
