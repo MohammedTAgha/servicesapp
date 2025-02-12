@@ -21,9 +21,9 @@ class OrderController extends Controller
             'service_id' => 'required|exists:services,id',
             'user_id' => 'required|exists:users,id',
             'status' => 'sometimes|string',
-            'payment' => 'required|numeric',
-            'date' => 'required|date',
-            'location' => 'required|string',
+            // 'payment' => 'required|numeric',
+            // 'date' => 'required|date',
+            'location' => 'nullable|string',
             'notes' => 'nullable|string',
         ]);
 
@@ -44,9 +44,9 @@ class OrderController extends Controller
             'service_id' => 'sometimes|exists:services,id',
             'user_id' => 'sometimes|exists:users,id',
             'status' => 'sometimes|string',
-            'payment' => 'sometimes|numeric',
-            'date' => 'sometimes|date',
-            'location' => 'sometimes|string',
+            // 'payment' => 'sometimes|numeric',
+            // 'date' => 'sometimes|date',
+            'location' => 'nullable|string',
             'notes' => 'nullable|string',
         ]);
 

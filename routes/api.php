@@ -37,5 +37,28 @@ Route::post('/login', function (Request $request) {
     }
 
     // Create and return a token
-    return 'okkk';
+    $token = $user->createToken('api-token')->plainTextToken;
+
+    return response()->json(['token' => $token]);
+});
+
+Route::post('/register', function (Request $request) {
+    // Validate the request
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required|email|unique:users',
+        'password' => 'required|min:6',
+    ]);
+
+    // Create the user
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+    ]);
+
+    // Create and return a token
+    $token = $user->createToken('api-token')->plainTextToken;
+
+    return response()->json(['token' => $token,'user'=>$user]);
 });
